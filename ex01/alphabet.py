@@ -5,7 +5,7 @@ mojisuu = 10
 kekkan = 2
 cc = 0
 count = 0
-moji = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+moji = [chr(65+i) for i in range(26)]
 def mn():
     st = datetime.datetime.now()
     for h in range(kurikaesi):
