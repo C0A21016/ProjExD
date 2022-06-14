@@ -53,7 +53,6 @@ def mondai(kek):
             if a2 not in kek:
                 print("不正解です.またチャレンジしてください")
                 cc += 1
-                break
             
 if __name__ == "__main__":
     mn()
