@@ -17,6 +17,10 @@ def button_click(event):
         entry.delete(0,tk.END)
         re="ぱわー！！"
         entry.insert(tk.END,re)
+    elif num=="pi":
+        entry.delete(0,tk.END)
+        re=3.14
+        entry.insert(tk.END,re)
     elif num=="Zz":
         tkm.showinfo("寝よか")
     elif num=="C":
@@ -33,7 +37,7 @@ if __name__ == "__main__":
     entry=tk.Entry(root, justify="right",width=10,font=("Times New Roman",40))
     entry.grid(column=0,columnspan=5)
     r,c=1,0
-    pi=3.14
+   
 
     for i, num in enumerate(["C","-","/","*","Zz","p","pi","←","+","=",9,8,7,6,5,4,3,2,1,0]):
         button = tk.Button(root,text=f"{num}", width=4,height=2, font=("Times New Roman", 30))
