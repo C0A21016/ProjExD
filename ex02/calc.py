@@ -35,7 +35,7 @@ if __name__ == "__main__":
     r,c=1,0
     pi=3.14
 
-    for i, num in enumerate(["C","-","/","*","Zz","p","pi","←",9,4,8,7,6,5,3,2,1,0,"+","="]):
+    for i, num in enumerate(["C","-","/","*","Zz","p","pi","←","+","=",9,8,7,6,5,4,3,2,1,0]):
         button = tk.Button(root,text=f"{num}", width=4,height=2, font=("Times New Roman", 30))
         button.bind("<1>",button_click)
         button.grid(row=r,column=c)
