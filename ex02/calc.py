@@ -1,4 +1,5 @@
 
+from socket import AF_AAL5
 import tkinter as tk
 import tkinter.messagebox as tkm
 def button_click(event):
@@ -19,10 +20,12 @@ def button_click(event):
         entry.insert(tk.END,re)
     elif num=="pi":
         entry.delete(0,tk.END)
-        re=3.14
-        entry.insert(tk.END,re)
+        af=3.14
+        entry.insert(tk.END,af)
+
     elif num=="Zz":
         tkm.showinfo("寝よか")
+
     elif num=="C":
         entry.delete(0,tk.END)
 
