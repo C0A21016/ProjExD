@@ -48,14 +48,17 @@ if __name__ == "__main__":
     button= tk.Button(root, text="もうむりだ",command=button_click)
     button.bind("<1>", button_click)
     button.pack()
+
     canvas.pack()
     maze_bg = ml.make_maze(15,9)
     ml.show_maze(canvas,maze_bg)
     tori = tk.PhotoImage(file="ex03/fig/3.png")
+
     mx, my = 1,1
     cx, cy = mx*100+50, my*100+50
     canvas.create_image(cx, cy, image=tori, tag ="tori")
     key=""
+    
     root.bind("<KeyPress-T>,<t>", key_down)
     root.bind("<KeyRelease>", key_up)
     main_proc()
