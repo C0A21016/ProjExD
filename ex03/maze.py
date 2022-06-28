@@ -15,7 +15,6 @@ def main_proc():
     if key == "Right" and maze_bg[my][mx+1]==0: mx += 1
     cx,cy = mx*100+50,my*100+50
 
-
     canvas.coords("tori",cx,cy)
     root.after(100,main_proc)
 def key_down(event):
@@ -35,7 +34,6 @@ def button_click(event):
     btn= event.widget
     txt = btn["text"]
     tkm.showinfo(txt, f"諦めるな！！")
-
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("迷えるこうかとん")
