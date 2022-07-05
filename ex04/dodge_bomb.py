@@ -8,9 +8,7 @@ def check_bound(rct,scr_rct):
     if rct.top < scr_rct.top or scr_rct.bottom < rct.bottom:
         tate=-1
     return yoko,tate
-
 def main():
-    
     clock = pg.time.Clock()
     pg.display.set_caption("逃げろ！こうかとん")
     screen_sfc = pg.display.set_mode((1600,900))
@@ -49,16 +47,10 @@ def main():
     bmimg2_rct.centery = random.randint(0,screen_rct.height)
     vx2, vy2 = +2, +2
 
-    
-
-
-
     while True:
         life = 3
         
         screen_sfc.blit(bgimg_sfc,bgimg_rct)
-        
-
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 return
@@ -85,14 +77,8 @@ def main():
             if key_states[pg.K_RIGHT] == True: 
                 kkimg_rct.centerx -=2
 
-
-
         screen_sfc.blit(kkimg_sfc,kkimg_rct)
         
-        
-        
-        
-
         bmimg_rct.move_ip(vx,vy)
         vx+=0.01
         vy+=0.01
@@ -101,11 +87,9 @@ def main():
         vx2+=0.01
         vy2+=0.01
        
-        
         screen_sfc.blit(bmimg_sfc,bmimg_rct)
         screen_sfc.blit(bmimg2_sfc,bmimg2_rct)
-        
-
+    
         yoko,tate= check_bound(bmimg_rct,screen_rct)
         vx *= yoko
         vy *= tate
