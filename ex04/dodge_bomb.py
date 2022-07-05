@@ -40,7 +40,7 @@ def main():
     bmimg_rct.centery = random.randint(0,screen_rct.height)
     vx, vy = +1, +1
 
-    bmimg2_sfc = pg.Surface((20,20))
+    bmimg2_sfc = pg.Surface((20,20)) #2対目の敵の描画
     bmimg2_sfc.set_colorkey((0,0,0))
     pg.draw.circle(bmimg2_sfc,(255,0,0),(10,10),10)
     bmimg2_rct = bmimg2_sfc.get_rect()
@@ -48,13 +48,13 @@ def main():
     vx2, vy2 = +2, +2
 
     while True:
-        life = 3
+        life = 3 #life point
         
         screen_sfc.blit(bgimg_sfc,bgimg_rct)
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 return
-            if event.type == pg.K_u:
+            if event.type == pg.K_u:#ukey を押すとgame over となる
                 screen_sfc.blit(ov_sfc,ov_rct)
                 return
                 
@@ -80,11 +80,11 @@ def main():
         screen_sfc.blit(kkimg_sfc,kkimg_rct)
         
         bmimg_rct.move_ip(vx,vy)
-        vx+=0.01
+        vx+=0.01#敵の速度増加
         vy+=0.01
        
-        bmimg2_rct.move_ip(vx2,vy2)
-        vx2+=0.01
+        bmimg2_rct.move_ip(vx2,vy2)#2対目の敵
+        vx2+=0.01#敵の速度増加
         vy2+=0.01
        
         screen_sfc.blit(bmimg_sfc,bmimg_rct)
@@ -100,7 +100,7 @@ def main():
        
         if kkimg_rct.colliderect(bmimg2_rct)and kkimg_rct.colliderect(bmimg_rct):
             screen_sfc.blit(ka_sfc,ka_rct)
-            life -= 1
+            life -= 1 #life point を減らす
             screen_sfc.blit(ka_sfc,ka_rct)
             life -= 1
             if life <=0:
