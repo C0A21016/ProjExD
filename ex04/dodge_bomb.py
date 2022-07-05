@@ -94,16 +94,13 @@ def main():
         vx *= yoko
         vy *= tate
     
-        if kkimg_rct.colliderect(bmimg_rct):
-            screen_sfc.blit(ka_sfc,ka_rct)
-            life -= 1
-            if life <=0:
-                return
         yoko,tate= check_bound(bmimg2_rct,screen_rct)
         vx2 *= yoko
         vy2 *= tate
        
-        if kkimg_rct.colliderect(bmimg2_rct):
+        if kkimg_rct.colliderect(bmimg2_rct)and kkimg_rct.colliderect(bmimg_rct):
+            screen_sfc.blit(ka_sfc,ka_rct)
+            life -= 1
             screen_sfc.blit(ka_sfc,ka_rct)
             life -= 1
             if life <=0:
