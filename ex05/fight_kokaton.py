@@ -35,7 +35,6 @@ class Bird:
             self.rct.centerx -= 1
         if key_states[pg.K_RIGHT]: 
             self.rct.centerx += 1
-        # 練習7
         if check_bound(self.rct, scr.rct) != (1, 1): # 領域外だったら
             if key_states[pg.K_UP]:
                 self.rct.centery += 1
@@ -46,6 +45,7 @@ class Bird:
             if key_states[pg.K_RIGHT]:
                 self.rct.centerx -= 1
         self.blit(scr)
+
 
 class Bomb:
     def __init__(self,color,size,vxy,scr):
@@ -70,6 +70,7 @@ class Bomb:
         # 練習5
         self.blit(scr)
 
+
 class enemy:  #新たにもう一つの敵を追加
     def __init__(self,color,size,vxy,scr):
         self.sfc = pg.Surface((4*size,4*size)) # Surface
@@ -90,6 +91,7 @@ class enemy:  #新たにもう一つの敵を追加
         self.vx *= yoko
         self.vy *= tate
         self.blit(scr)
+
     
 class end: #hpが０になった時にゲームおーばーとなる
     def __init__(self,hp,txt):
@@ -164,7 +166,6 @@ def main():
         clock.tick(1000)
 
 
-# 練習7
 def check_bound(rct, scr_rct):
     '''
     [1] rct: こうかとん or 爆弾のRect
@@ -174,7 +175,6 @@ def check_bound(rct, scr_rct):
     if rct.left < scr_rct.left or scr_rct.right  < rct.right : yoko = -1 # 領域外
     if rct.top  < scr_rct.top  or scr_rct.bottom < rct.bottom: tate = -1 # 領域外
     return yoko, tate
-
 
 
 if __name__ == "__main__":
