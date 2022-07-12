@@ -47,7 +47,6 @@ class Bird:
                 self.rct.centerx -= 1
         self.blit(scr)
 
-
 class Bomb:
     def __init__(self,color,size,vxy,scr):
         self.sfc = pg.Surface((2*size,2*size)) # Surface
@@ -107,7 +106,7 @@ class end: #hpが０になった時にゲームおーばーとなる
                     return
 
 
-class bullet(pg.sprite.Sprite):  #スペースキーを押したら弾が発射される
+class bullet(pg.sprite.Sprite):  #弾のクラス発射される
 
     speed = -11
     images = []
@@ -152,7 +151,7 @@ def main():
         bkd.update(scr)
         tk.update(scr)
         keystate = pg.key.get_pressed()
-        firing = keystate[pg.K_SPACE]
+        firing = keystate[pg.K_SPACE]#スペースキーを押すと弾が発射される
         if not kkt.reloading and firing and len(bullets) < 3:
             bullet(kkt.gunpos())
           
