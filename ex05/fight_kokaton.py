@@ -70,8 +70,58 @@ class Bomb:
         self.vy *= tate
         # 練習5
         self.blit(scr)
-        
 
+class enemy:  #新たにもう一つの敵を追加
+    def __init__(self,color,size,vxy,scr):
+        self.sfc = pg.Surface((4*size,4*size)) # Surface
+        self.sfc.set_colorkey((0, 0, 0)) 
+        pg.draw.circle(self.sfc, color, (size,size),size)
+        self.rct = self.sfc.get_rect() # Rect
+        self.rct.centerx = 100
+        self.rct.centery = 450
+        self.vx, self.vy = vxy
+
+    def blit(self,scr:Screen):
+        scr.sfc.blit(self.sfc,self.rct)
+
+    def update(self,scr):
+        self.rct.move_ip(self.vx,self.vy)
+        self.vx+=0.1
+        yoko, tate = check_bound(self.rct, scr.rct)
+        self.vx *= yoko
+        self.vy *= tate
+        self.blit(scr)
+    
+class end: #hpが０になった時にゲームおーばーとなる
+    def __init__(self,hp,txt):
+        hp=0
+
+    def hhh(self,tk,bkd,scr):
+
+        if self.rct.colliderect(self.rct)and kkt.rct.colliderect(bkd.rct):
+                scr.sfc.blit(tk.sfc,tk.rct)
+                life -= 1 #life point を減らす
+                scr.sfc.blit(tk.sfc,tk.rct)
+                life -= 1
+                if life <=0:
+                    return
+
+
+class bullet(pg.sprite.Sprite):  #スペースキーを押したら弾が発射される
+
+    speed = -11
+    images = []
+
+    def __init__(self, pos):
+        pg.sprite.Sprite.__init__(self, self.containers)
+        self.image = self.images[0]
+        self.rect = self.image.get_rect(midbottom=pos)
+
+    def update(self):
+        
+        self.rect.move_ip(0, self.speed)
+        if self.rect.top <= 0: #弾が画面外に行くと消える
+            self.kill()
 
 
 def main():
@@ -85,6 +135,10 @@ def main():
 
     
     bkd=Bomb((255,0,0),10,(+1,+1),scr)
+    en=end(3,"ゲームオバー")
+    tk = enemy((255,255,0),30,(+3,0),scr)
+    bullets = pg.sprite.Group()
+    bullet.containers = bullets, all
     while True:
         scr.blit()
         
@@ -96,8 +150,15 @@ def main():
 
         
         bkd.update(scr)
-        # 練習8
+        tk.update(scr)
+        keystate = pg.key.get_pressed()
+        firing = keystate[pg.K_SPACE]
+        if not kkt.reloading and firing and len(bullets) < 3:
+            bullet(kkt.gunpos())
+          
         if kkt.rct.colliderect(bkd.rct):
+            return 
+        if kkt.rct.colliderect(tk.rct):
             return 
 
         pg.display.update()
