@@ -22,7 +22,7 @@ class Ganban:
         self.dig_count = 0
         self.dig_impct = 8
         self.kiban_size = pg.Rect(20,20,1000,800)
-        self.color_list = [[255,255,255],[255,0,0],[0,255,0],[0,0,255]]
+        self.color_list = [[80,80,80],[116,80,48],[100,70,40],[105,60,35]]
         self.rock = [[random.randint(1,3) for i in range(self.gx_size)] for j in range(self.gy_size)]
         self.kiban_sfc = pg.Surface((self.gx_size*4,self.gy_size*4))
         self.kiban_sfc.set_alpha(255)
