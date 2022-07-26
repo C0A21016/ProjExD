@@ -70,7 +70,7 @@ class Ganban:
         #岩盤掘削ツールの変更
         if size == "big":
             self.dig_size = 45
-            self.dig_impct = 8
+            self.dig_impct = 20
 
         elif size == "small":
             self.dig_size = 15
